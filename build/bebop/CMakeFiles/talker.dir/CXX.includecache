@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/jptboy/ros/catkin_ws/src/bebop/include/bebop/foo.h
+
 /home/jptboy/ros/catkin_ws/src/bebop/src/pub.cpp
 ros/ros.h
 -
@@ -15,6 +17,8 @@ unistd.h
 -
 sstream
 -
+../include/bebop/foo.h
+/home/jptboy/ros/catkin_ws/src/bebop/include/bebop/foo.h
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h
