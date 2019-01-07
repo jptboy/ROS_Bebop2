@@ -1,0 +1,8 @@
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/./setup.bash
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/./setup.zsh
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/./setup.sh
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/./_setup_util.py
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/./env.sh
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/lib/pkgconfig/catkin_tools_prebuild.pc
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Symlinking /home/jptboy/ros/catkin_ws/src/bebop/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake

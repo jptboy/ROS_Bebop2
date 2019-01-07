@@ -1,0 +1,8 @@
+prefix=/home/jptboy/ros/catkin_ws/install
+
+Name: bebop
+Description: Description of bebop
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/jptboy/ros/catkin_ws/install/lib 
+Requires: 

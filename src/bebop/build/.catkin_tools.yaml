@@ -1,0 +1,6 @@
+devel_space: /home/jptboy/ros/catkin_ws/src/bebop/devel
+install: false
+install_space: /home/jptboy/ros/catkin_ws/src/bebop/install
+profile: default
+source_space: /home/jptboy/ros/catkin_ws/src/bebop/src
+workspace: /home/jptboy/ros/catkin_ws/src/bebop
