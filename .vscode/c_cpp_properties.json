@@ -8,7 +8,8 @@
             "includePath": [
                 "/opt/ros/kinetic/include",
                 "/home/jptboy/ros/catkin_ws/src/bebop/include",
-                "/usr/include"
+                "/usr/include",
+                "/home/jptboy/bebop_ws/devel/include/bebop_msgs"
             ],
             "name": "Linux",
             "intelliSenseMode": "gcc-x64",

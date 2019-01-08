@@ -2,7 +2,7 @@
 #include <std_msgs/Empty.h>
 #include <unistd.h>
 #include <sstream>
-#include "../include/bebop/foo.h"
+#include "../include/bebop/dependencies.h"
 // int main(int argc, char** argv)
 // {
 //     std::cout << "Press l(land) or press t(takeoff)\n";
@@ -22,6 +22,7 @@
 //     return 0;
 
 // }
+static double velVal = 5.0;
 static inline void prompt()
 {
     std::cout 
@@ -30,14 +31,34 @@ static inline void prompt()
         << "| Takeoff: r | Land  f    |         |         |\n"
         << "| Forward: w | Back: s    | Left: a | Right: d|\n"
         << "|            | RotateL: j | RotR: k |         |\n"
+        << "|            | Ascend : z | Desc: x |         |\n"
         << "|            | Quit:    q |         |         |\n"
         << "|---------------------------------------------|\n";
 }
-
+void flyingStateHandler()
+{
+    printf("foo\n");
+}
 int main(int argc, char** argv)
 {
+    if(argc < 2)
+    {
+        std::cerr << "Please provide a velocity value!\n";
+        std::cout << "Usage talker velVal\n";
+        return 0;
+    }
     ros::init(argc,argv,"talker");
     ros::NodeHandle n;
+    try
+    {
+        velVal = std::stod(argv[1]);
+    }
+    catch(...)
+    {
+        std::cerr << "Please provide a valid velocity value!\n";
+        std::cout << "Usage: talker velVal\n";
+        return 0;
+    }
     char opt;
     do
     {
@@ -70,20 +91,98 @@ int main(int argc, char** argv)
                 //ros::spinOnce();
                 break;
             }
+            //publish geometry_msgs/Twist to /bebop/cmd_vel topic while bebop is flying to move it
             case 'w'://forward
+            {
+                geometry_msgs::Twist twistMsg;
+                twistMsg.linear.x = velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
-            case 'a'://left
+            }
+            case 'a':
+            {//left
+                geometry_msgs::Twist twistMsg;
+                twistMsg.linear.y = velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
+            }
             case 's'://backwards
+            {
+                geometry_msgs::Twist twistMsg;
+                twistMsg.linear.x = -1*velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
+            }
             case 'd'://right
+            {
+                geometry_msgs::Twist twistMsg;
+                twistMsg.linear.y = -1*velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
-            case 'j'://rotate left
+            }
+            case 'j'://rotate ccw
+            {
+                geometry_msgs::Twist twistMsg;
+                twistMsg.angular.z = velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
-            case 'k'://rotate right
+            }
+            case 'k'://rotate cw
+            {
+                geometry_msgs::Twist twistMsg;
+                twistMsg.angular.z = -1*velVal;
+                ros::Publisher takeOff = n.advertise<geometry_msgs::Twist>("/bebop/cmd_vel",1);
+                sleep(1);
+                ros::Time begin = ros::Time::now();
+                ros::Duration seconds = ros::Duration(3);
+                ros::Time endTime = begin + seconds;
+                while(ros::Time::now() < endTime) takeOff.publish(twistMsg);
+                sleep(1);
+                takeOff.~Publisher();
                 break;
+            }
             case 'q':
+            {
+                //check if drone is flying and if so land it
+                bebop_msgs::Ardrone3PilotingStateFlyingStateChanged flyingState;
+                //ros::Subscriber sub = n.subscribe("/bebop/states/ardrone3/PilotingState/FlyingStateChanged",1000,flyingStateHandler);
                 break;
+            }
             default:
                 std::cout << "Please enter a valid option!";
         }
