@@ -18,12 +18,12 @@ void takeoff(ros::NodeHandle& n)
 }
 void land(ros::NodeHandle& n)
 {
-    std_msgs::Empty takeoffmsg;
-    ros::Publisher takeoff = n.advertise<std_msgs::Empty>("/bebop/land",1);
+    std_msgs::Empty emptyMsg;
+    ros::Publisher takeOff = n.advertise<std_msgs::Empty>("/bebop/land",1);
     sleep(1);
-    takeoff.publish(takeoffmsg);
+    takeOff.publish(emptyMsg);
     sleep(1);
-    takeoff.~Publisher();
+    takeOff.~Publisher();
 }
 int main(int argc, char** argv)
 {  
@@ -37,14 +37,14 @@ int main(int argc, char** argv)
     auto cmd = std::stoi(argv[1]);
     switch(cmd)
     {
+        case 0:
+        {
+            land(n);
+            break;
+        }
         case 1:
         {
             takeoff(n);
-            break;
-        }
-        case 2:
-        {
-            land(n);
             break;
         }
         default:
