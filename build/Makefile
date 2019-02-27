@@ -490,6 +490,32 @@ std_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f bebop/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make bebop/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
+#=============================================================================
+# Target rules for targets named pubtopic
+
+# Build rule for target.
+pubtopic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pubtopic
+.PHONY : pubtopic
+
+# fast build rule for target.
+pubtopic/fast:
+	$(MAKE) -f bebop/CMakeFiles/pubtopic.dir/build.make bebop/CMakeFiles/pubtopic.dir/build
+.PHONY : pubtopic/fast
+
+#=============================================================================
+# Target rules for targets named sub
+
+# Build rule for target.
+sub: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sub
+.PHONY : sub
+
+# fast build rule for target.
+sub/fast:
+	$(MAKE) -f bebop/CMakeFiles/sub.dir/build.make bebop/CMakeFiles/sub.dir/build
+.PHONY : sub/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -528,6 +554,8 @@ help:
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... pubtopic"
+	@echo "... sub"
 .PHONY : help
 
 

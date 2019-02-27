@@ -198,4 +198,8 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 add_executable(talker src/pub.cpp)
+add_executable(pubtopic src/publisher.cpp)
+add_executable(sub src/subber.cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
+target_link_libraries(pubtopic ${catkin_LIBRARIES})
+target_link_libraries(sub ${catkin_LIBRARIES})

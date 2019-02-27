@@ -66,16 +66,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -87,6 +88,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target test
 test:
@@ -120,18 +132,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -405,6 +405,36 @@ std_msgs_generate_messages_lisp/fast:
 	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make bebop/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
 
+# Convenience name for target.
+bebop/CMakeFiles/pubtopic.dir/rule:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop/CMakeFiles/pubtopic.dir/rule
+.PHONY : bebop/CMakeFiles/pubtopic.dir/rule
+
+# Convenience name for target.
+pubtopic: bebop/CMakeFiles/pubtopic.dir/rule
+
+.PHONY : pubtopic
+
+# fast build rule for target.
+pubtopic/fast:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/pubtopic.dir/build.make bebop/CMakeFiles/pubtopic.dir/build
+.PHONY : pubtopic/fast
+
+# Convenience name for target.
+bebop/CMakeFiles/sub.dir/rule:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bebop/CMakeFiles/sub.dir/rule
+.PHONY : bebop/CMakeFiles/sub.dir/rule
+
+# Convenience name for target.
+sub: bebop/CMakeFiles/sub.dir/rule
+
+.PHONY : sub
+
+# fast build rule for target.
+sub/fast:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/sub.dir/build.make bebop/CMakeFiles/sub.dir/build
+.PHONY : sub/fast
+
 src/pub.o: src/pub.cpp.o
 
 .PHONY : src/pub.o
@@ -432,6 +462,60 @@ src/pub.cpp.s:
 	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/talker.dir/build.make bebop/CMakeFiles/talker.dir/src/pub.cpp.s
 .PHONY : src/pub.cpp.s
 
+src/publisher.o: src/publisher.cpp.o
+
+.PHONY : src/publisher.o
+
+# target to build an object file
+src/publisher.cpp.o:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/pubtopic.dir/build.make bebop/CMakeFiles/pubtopic.dir/src/publisher.cpp.o
+.PHONY : src/publisher.cpp.o
+
+src/publisher.i: src/publisher.cpp.i
+
+.PHONY : src/publisher.i
+
+# target to preprocess a source file
+src/publisher.cpp.i:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/pubtopic.dir/build.make bebop/CMakeFiles/pubtopic.dir/src/publisher.cpp.i
+.PHONY : src/publisher.cpp.i
+
+src/publisher.s: src/publisher.cpp.s
+
+.PHONY : src/publisher.s
+
+# target to generate assembly for a file
+src/publisher.cpp.s:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/pubtopic.dir/build.make bebop/CMakeFiles/pubtopic.dir/src/publisher.cpp.s
+.PHONY : src/publisher.cpp.s
+
+src/subber.o: src/subber.cpp.o
+
+.PHONY : src/subber.o
+
+# target to build an object file
+src/subber.cpp.o:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/sub.dir/build.make bebop/CMakeFiles/sub.dir/src/subber.cpp.o
+.PHONY : src/subber.cpp.o
+
+src/subber.i: src/subber.cpp.i
+
+.PHONY : src/subber.i
+
+# target to preprocess a source file
+src/subber.cpp.i:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/sub.dir/build.make bebop/CMakeFiles/sub.dir/src/subber.cpp.i
+.PHONY : src/subber.cpp.i
+
+src/subber.s: src/subber.cpp.s
+
+.PHONY : src/subber.s
+
+# target to generate assembly for a file
+src/subber.cpp.s:
+	cd /home/jptboy/ros/catkin_ws/build && $(MAKE) -f bebop/CMakeFiles/sub.dir/build.make bebop/CMakeFiles/sub.dir/src/subber.cpp.s
+.PHONY : src/subber.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -439,12 +523,13 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... list_install_components"
+	@echo "... install"
+	@echo "... rebuild_cache"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... edit_cache"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... rebuild_cache"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_cpp"
@@ -458,12 +543,19 @@ help:
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... pubtopic"
+	@echo "... sub"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... install"
 	@echo "... src/pub.o"
 	@echo "... src/pub.i"
 	@echo "... src/pub.s"
+	@echo "... src/publisher.o"
+	@echo "... src/publisher.i"
+	@echo "... src/publisher.s"
+	@echo "... src/subber.o"
+	@echo "... src/subber.i"
+	@echo "... src/subber.s"
 .PHONY : help
 
 

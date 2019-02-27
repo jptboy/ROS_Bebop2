@@ -36,15 +36,7 @@ ros/ros.h
 unistd.h
 -
 
-/home/jptboy/ros/catkin_ws/src/bebop/src/pub.cpp
-ros/ros.h
--
-std_msgs/Empty.h
--
-unistd.h
--
-sstream
--
+/home/jptboy/ros/catkin_ws/src/bebop/src/subber.cpp
 ../include/bebop/dependencies.h
 /home/jptboy/ros/catkin_ws/src/bebop/include/bebop/dependencies.h
 
@@ -729,22 +721,6 @@ ros/forwards.h
 /opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
-
-/opt/ros/kinetic/include/std_msgs/Empty.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
 
 /opt/ros/kinetic/include/std_msgs/Header.h
 string
